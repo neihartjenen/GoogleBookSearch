@@ -1,7 +1,7 @@
 import React from 'react';
-// import Nav from "./components/Nav";
+import Nav from "./components/Nav";
 import Book from "./pages/Book";
-import Detail from "./pages/Detail";
+import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -9,11 +9,11 @@ function App() {
   return (
     <Router>
       <div>
-      {/* <Nav> */}
+      <Nav/>
         <Switch>
           <Route exact path="/" component={Book}/>
         </Switch>
-      {/* </Nav> */}
+      
       </div>
     </Router>
    
