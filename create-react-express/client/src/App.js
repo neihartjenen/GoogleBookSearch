@@ -5,14 +5,15 @@ import Jumbotron from "./components/jumbotron";
 
 class App extends Component {
   render() {
-    return (
+    return ( 
+      <div>
       <NavBar/>
-      <Jumbotron></Jumbotron>
+      <Jumbotron/>
       // navbar
       // jumbotron
       // form 1 input
       // results
-      
+      </div>
     );
   }
 }
