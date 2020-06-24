@@ -8,10 +8,12 @@ export function Input({props}) {
     )
 }
 
-export function searchBtn({props}) {
+export function SearchBtn({props, children}) {
     return (
-    <button {...props} style={{float:"right"}} className="btn btn-primary">
-        {props.children}
+        <div className="col-auto"> 
+    <button {...props} style={{}} className="btn btn-primary mr-0">
+        {children}
     </button>
+    </div>
     )
 }
