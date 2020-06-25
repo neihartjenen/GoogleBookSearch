@@ -9,11 +9,11 @@ class App extends Component {
       <div>
       <NavBar/>
       <Jumbotron/>
-      // navbar
-      // jumbotron
+      
+      
+      </div>
       // form 1 input
       // results
-      </div>
     );
   }
 }
