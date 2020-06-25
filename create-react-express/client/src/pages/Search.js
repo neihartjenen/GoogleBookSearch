@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "../components/navbar";
 import Jumbotron from "../components/jumbotron";
-import {Input, SearchBtn} from "../components/form";
+import Form from "../components/form";
 import {Container, Col, Row} from "../components/Grid"
 import API from "../utils/API" 
 
@@ -21,6 +21,7 @@ class Search extends Component{
 
 
     handleFormSubmit = event => {
+        console.log("event is happening")
         event.preventDefault();
         API.getBooks((this.state.search))
         .then( data=> console.log(data)) 
@@ -34,23 +35,15 @@ class Search extends Component{
                 <Jumbotron/>
                 <Row>
                     <Col size="lg-12">
-
-                        <form className="border border-dark">
+                        <form className="border border-dark"
+                            onSubmit={() => this.handleFormSubmit}>
                             <div>
                             <div style={{marginLeft:"10px",marginBottom:"5px",marginTop:"10px"}}>Book Search</div>
                             <div style={{fontSize:"13px", marginLeft:"10px",marginBottom:"10px",marginTop:"5px"}}>Book</div>
-                            <Input 
-                                value={this.state.search}
-                                onChange={this.handleInputChange}
-                                name="bookSearch"
-                                placeholder="Book Title"
-                            />
-                            <SearchBtn 
-                            onClick={this.handleFormSubmit}>
-                                Search
-                            </SearchBtn>
+                            
                             </div>
                         </form>
+                        <Form/>
                     </Col>
                 </Row>
             </Container>
