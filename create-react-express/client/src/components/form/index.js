@@ -1,5 +1,6 @@
 import React from "react";
 import API from "../../utils/API" 
+import Card from "../card"
 
 // export function Input({props}) {
 //    return ( 
@@ -31,7 +32,7 @@ class Form extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.search);
+    // alert('A name was submitted: ' + this.state.search);
     event.preventDefault();
         API.getBooks((this.state.search))
         .then( res=> this.setState({books: res.data.items}))
@@ -41,13 +42,18 @@ class Form extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.search} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Name:
+            <input type="text" value={this.state.search} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+        <form>
+         {this.state.books.map(book => <Card props={book}/>)} 
+        </form>
+      </div>
     );
   }
 }
