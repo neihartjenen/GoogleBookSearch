@@ -12,7 +12,7 @@ import "./style.css";
 
 
 function Card({props}) {
-    console.log(props);
+    console.log(props.volumeInfo.previewLink);
     return(
         <Container>
             <Row>
@@ -21,8 +21,12 @@ function Card({props}) {
                         <Col size="lg-12">
                             <Row>
                                 <h2 id="title">{props.volumeInfo.title}</h2>
-                                <button href={props.volumeInfo.previewLink} id="viewbtn">View</button>
-                                <button id="savebtn">Save</button>
+                                <a target="_blank" id="viewbtn" className="btn btn-info ml-auto" href={props.volumeInfo.previewLink}>
+                                    View
+                                </a>
+                                <a target="_blank" className="btn btn-info ml-1" id="savebtn" href="/saved">
+                                    Save
+                                </a>
                             </Row>
                             <Row>
                                 <p>{props.volumeInfo.subtitle}</p>
