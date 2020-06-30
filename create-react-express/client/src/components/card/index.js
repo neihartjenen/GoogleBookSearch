@@ -24,7 +24,7 @@ function Card({props}) {
                                 <a target="_blank" id="viewbtn" className="btn btn-info ml-auto" href={props.volumeInfo.previewLink}>
                                     View
                                 </a>
-                                <a target="_blank" className="btn btn-info ml-1" id="savebtn" href="/saved">
+                                <a target="_blank" className="btn btn-info ml-1" id="savebtn" onClick={()=>this.handleSaved(props)} href="/saved">
                                     Save
                                 </a>
                             </Row>

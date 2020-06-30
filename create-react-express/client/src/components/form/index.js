@@ -21,7 +21,8 @@ class Form extends React.Component {
     super(props);
     this.state = {
         books: [],
-        search: ''};
+        search: ''
+      };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,6 +40,25 @@ class Form extends React.Component {
         .catch(err=> console.log(err))
         console.log(this.state.books)
   }
+  
+  handleInputChange = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+        [name]:value,
+    });
+  };
+
+  // savedBook = id => {
+  //   API.saveBooks().then(res)
+  // }
+
+  // handleSaved = event => {
+  //     event.preventDefault();  
+  //     API.saveBooks({
+  //         title: 
+  //     })
+  // }
 
   render() {
     return (

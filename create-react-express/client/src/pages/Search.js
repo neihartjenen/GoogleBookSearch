@@ -8,16 +8,10 @@ import API from "../utils/API"
 class Search extends Component{
     state={
         books: [],
-        search: ""
+        search: "",
     }; 
     
-    handleInputChange = event => {
-        const { name, value } = event.target;
-
-        this.setState({
-            [name]:value,
-        });
-    };
+    
 
 
     handleFormSubmit = event => {
@@ -42,8 +36,9 @@ class Search extends Component{
                             <div style={{fontSize:"13px", marginLeft:"10px",marginBottom:"10px",marginTop:"5px"}}>Book</div>
                             
                             </div>
+                            <Form/>
                         </form>
-                        <Form/>
+                        
                     </Col>
                 </Row>
             </Container>
