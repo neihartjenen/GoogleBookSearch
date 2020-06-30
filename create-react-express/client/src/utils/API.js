@@ -6,5 +6,8 @@ export default {
     },
     saveBooks: function(bookData){
         return axios.post("/api/books", bookData)
+    },
+    getSaved: function() {
+        return axios.get("api/books");
     }
 }

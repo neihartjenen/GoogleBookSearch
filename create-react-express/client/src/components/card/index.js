@@ -11,8 +11,8 @@ import "./style.css";
 // Saved button (adds to saved database)
 
 
-function Card({props}) {
-    console.log(props.volumeInfo.previewLink);
+function Card(props) {
+    console.log(props.book.volumeInfo.previewLink);
     return(
         <Container>
             <Row>
@@ -20,19 +20,19 @@ function Card({props}) {
                     <Row>
                         <Col size="lg-12">
                             <Row>
-                                <h2 id="title">{props.volumeInfo.title}</h2>
-                                <a target="_blank" id="viewbtn" className="btn btn-info ml-auto" href={props.volumeInfo.previewLink}>
+                                <h2 id="title">{props.book.volumeInfo.title}</h2>
+                                <a target="_blank" id="viewbtn" className="btn btn-info ml-auto" href={props.book.volumeInfo.previewLink}>
                                     View
                                 </a>
-                                <a target="_blank" className="btn btn-info ml-1" id="savebtn" onClick={()=>this.handleSaved(props)} href="/saved">
+                                <a target="_blank" className="btn btn-info ml-1" id="savebtn" onClick={() => props.handler(props.book.id)} bookid={props.book.id}>
                                     Save
                                 </a>
                             </Row>
                             <Row>
-                                <p>{props.volumeInfo.subtitle}</p>
+                                <p>{props.book.volumeInfo.subtitle}</p>
                             </Row>
                             <Row>
-                                <p>{props.volumeInfo.authors}</p>
+                                <p>{props.book.volumeInfo.authors}</p>
                             </Row>
                         </Col>
                         
@@ -40,11 +40,11 @@ function Card({props}) {
                     <Row>
                         {/* Book Image */}
                         <Col size="lg-4">
-                            <img src={props.volumeInfo.imageLinks.smallThumbnail}></img>
+                            <img src={props.book.volumeInfo.imageLinks.smallThumbnail}></img>
                         </Col>
                         {/* description */}
                         <Col size="lg-8">
-                            <p>{props.volumeInfo.description}</p>
+                            <p>{props.book.volumeInfo.description}</p>
                         </Col>
                     </Row>
                 </Col>

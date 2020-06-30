@@ -29,16 +29,7 @@ class Search extends Component{
                 <Jumbotron/>
                 <Row>
                     <Col size="lg-12">
-                        <form className="border border-dark"
-                            onSubmit={() => this.handleFormSubmit}>
-                            <div>
-                            <div style={{marginLeft:"10px",marginBottom:"5px",marginTop:"10px"}}>Book Search</div>
-                            <div style={{fontSize:"13px", marginLeft:"10px",marginBottom:"10px",marginTop:"5px"}}>Book</div>
-                            
-                            </div>
-                            <Form/>
-                        </form>
-                        
+                        <Form/>
                     </Col>
                 </Row>
             </Container>

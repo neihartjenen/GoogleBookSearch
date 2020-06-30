@@ -26,10 +26,39 @@ class Form extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.hander = this.handler.bind(this);
   }
 
   handleChange(event) {
     this.setState({search: event.target.value});
+  }
+
+  handler(id) {
+    console.log(id);
+    const book = {
+      title: "",
+      subtitle: "",
+      authors: [],
+      description: "",
+      link: "",
+      image: ""
+    };
+
+    for(var i = 0; i < this.state.books.length(); i++){
+      if(this.state.books[i].id === id){
+        book.title = this.state.books.volumeinfo.title;
+        book.subtitle = this.state.books.volumeinfo.subtitle;
+        book.authors = this.state.books.volumeinfo.authors;
+        book.description = this.state.books.volumeinfo.description;
+        book.link = this.state.books.volumeinfo.previewlink;
+        book.image = this.state.books.volumeinfo.imagelinks.smallthumbnail;
+      }
+    }
+
+    API.saveBooks((book))
+    .then()
+    .catch(err => console.log(err))
+
   }
 
   handleSubmit(event) {
@@ -63,6 +92,8 @@ class Form extends React.Component {
   render() {
     return (
       <div>
+        <div style={{marginLeft:"10px",marginBottom:"5px",marginTop:"10px"}}>Book Search</div>
+          <div style={{fontSize:"13px", marginLeft:"10px",marginBottom:"10px",marginTop:"5px"}}>Book</div>
         <form onSubmit={this.handleSubmit}>
           <label>
             Name:
@@ -71,7 +102,8 @@ class Form extends React.Component {
           <input type="submit" value="Submit" />
         </form>
         <form>
-         {this.state.books.map(book => <Card props={book}/>)} 
+         {this.state.books.map((book,i) =>  <Card key={i} book={book} handler={this.handler}/>)} 
+         {this.state.books.map((book,i) =>  console.log(i))};
         </form>
       </div>
     );
