@@ -10,11 +10,11 @@ class Saved extends Component{
     state={
         savedBooks: [],
     }; 
-componentDidMount(){
-    API.savedBooks()
-    .then(res => this.setState({ savedBooks: res.data }))
-    .catch(err => console.log(err))
-}
+// componentDidMount(){
+//     API.savedBooks()
+//     .then(res => this.setState({ savedBooks: res.data }))
+//     .catch(err => console.log(err))
+// }
 //getSavedBook
 // deleteBook = id => {
 //     API.deleteBook(id)
