@@ -21,7 +21,15 @@ class Form extends React.Component {
     super(props);
     this.state = {
         books: [],
-        search: ''
+        search: '',
+        bookobj: {
+          title: "",
+          subtitle: "",
+          authors: [],
+          description: "",
+          link: "",
+          image: ""
+        }
       };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,29 +41,23 @@ class Form extends React.Component {
     this.setState({search: event.target.value});
   }
 
-  handler(id) {
+  handler = (id) => {
     console.log(id);
-    const book = {
-      title: "",
-      subtitle: "",
-      authors: [],
-      description: "",
-      link: "",
-      image: ""
-    };
 
-    for(var i = 0; i < this.state.books.length(); i++){
-      if(this.state.books[i].id === id){
-        book.title = this.state.books.volumeinfo.title;
-        book.subtitle = this.state.books.volumeinfo.subtitle;
-        book.authors = this.state.books.volumeinfo.authors;
-        book.description = this.state.books.volumeinfo.description;
-        book.link = this.state.books.volumeinfo.previewlink;
-        book.image = this.state.books.volumeinfo.imagelinks.smallthumbnail;
-      }
-    }
+    this.state.books.map(book => {
+      console.log(book);
+        if(book.id === id){
+          this.state.bookobj.title = book.volumeInfo.title;
+          this.state.bookobj.subtitle = book.volumeInfo.subtitle;
+          this.state.bookobj.authors = book.volumeInfo.authors;
+          this.state.bookobj.description = book.volumeInfo.description;
+          this.state.bookobj.link = book.volumeInfo.previewlink;
+          this.state.bookobj.image = book.volumeInfo.imageLinks.smallThumbnail;
+          console.log(this.state.bookobj);
+        }
+    })
 
-    API.saveBooks((book))
+    API.saveBooks((this.state.bookobj))
     .then()
     .catch(err => console.log(err))
 
@@ -67,7 +69,6 @@ class Form extends React.Component {
         API.getBooks((this.state.search))
         .then( res=> this.setState({books: res.data.items}))
         .catch(err=> console.log(err))
-        console.log(this.state.books)
   }
   
   handleInputChange = event => {

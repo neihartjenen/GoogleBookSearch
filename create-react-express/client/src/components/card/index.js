@@ -24,6 +24,7 @@ function Card(props) {
                                 <a target="_blank" id="viewbtn" className="btn btn-info ml-auto" href={props.book.volumeInfo.previewLink}>
                                     View
                                 </a>
+                                                {/* in onclick put in every piece of data we need, e.g. title,description,subtitle,etc. */}
                                 <a target="_blank" className="btn btn-info ml-1" id="savebtn" onClick={() => props.handler(props.book.id)} bookid={props.book.id}>
                                     Save
                                 </a>
