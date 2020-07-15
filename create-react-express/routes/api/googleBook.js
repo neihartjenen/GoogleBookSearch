@@ -1,3 +1,4 @@
+  
 const router = require("express").Router();
 const axios = require("axios");
 
@@ -10,4 +11,4 @@ router.route("/").get((req, res) => {
     .catch((err) => console.log(err));
 });
 
-module.exports = router;
+module.exports = router

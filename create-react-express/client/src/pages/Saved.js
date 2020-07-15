@@ -1,37 +1,40 @@
 import React, { Component } from "react";
-import NavBar from "../components/navbar";
 import Jumbotron from "../components/jumbotron";
 import "./style.css"
-import Form from "../components/form";
 import {Container, Col, Row} from "../components/Grid"
 import API from "../utils/API" 
-import Card from "../components/card"
+import NavBar from "../components/navbar"
+import SavedResults from "../components/SavedResults"
+
 class Saved extends Component{
     state={
         savedBooks: [],
     }; 
-// componentDidMount(){
-//     API.savedBooks()
-//     .then(res => this.setState({ savedBooks: res.data }))
-//     .catch(err => console.log(err))
-// }
-//getSavedBook
-// deleteBook = id => {
-//     API.deleteBook(id)
-//     .then(res => this.state.savedBooks())
-//     .catch(err=> console.log(err));
-// }
+    componentDidMount(){
+        API.getBooks()
+        .then(res => this.setState({ savedBooks: res.data }))
+        .catch(err => console.log(err))
+    }
+
+    handleDeleteBook = id => {
+        console.log(id)
+        API.deleteBook(id)
+        .then(res => this.componentDidMount())
+        .catch(err=> console.log(err));
+    }
 render() {
     return ( 
-        <Container fluid>
+        <div>
+        <Container fluid className="container">
             <NavBar/>
             <Jumbotron/>
             <Row>
                 <Col size="lg-12">
-                {this.state.savedBooks.map(book => <Card props={book} btn={"Delete"}/>)}
+                <SavedResults savedBooks={this.state.savedBooks} handleDeleteBook={this.handleDeleteBook} />
                 </Col>
             </Row>
         </Container>
+        </div>
     );
 }
 }

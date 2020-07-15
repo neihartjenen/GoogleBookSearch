@@ -10,13 +10,14 @@ class App extends Component {
   render() {
     return ( 
       <Router>
-        <div>
+        <span>
           <Switch>
+            
             <Route exact path="/" component={Search}/>
             <Route exact path="/saved" component={Saved}/>
             <Route exact path="*" component={NoMatch}/>
           </Switch>
-        </div>
+        </span>
       </Router>
     );
   }
